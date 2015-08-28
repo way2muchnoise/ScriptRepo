@@ -3,12 +3,14 @@ __author__ = 'jens'
 import Tkinter
 
 
+# Adds certain amount of indent before a given text
 def add_indent(indent, text, indent_text=' '):
     for x in xrange(indent):
         text = indent_text + text
     return text
 
 
+# Advanced print preparation function
 def print_prep(raw, depth=0, indent_text=' '):
     prepped = ''
     if type(raw) is dict:
@@ -32,13 +34,15 @@ def print_prep(raw, depth=0, indent_text=' '):
     return prepped
 
 
-def copy_to_clipboard(s):
+# Copy the given object print prepped to the clipboard
+def copy_to_clipboard(raw):
     tk = Tkinter.Tk()
     tk.withdraw()
     tk.clipboard_clear()
-    tk.clipboard_append(print_prep(s))
+    tk.clipboard_append(print_prep(raw))
     tk.destroy()
 
 
+# Read a multi line input for the console with given sentinel
 def raw_multi_line_input(sentinel=''):
     return iter(raw_input, sentinel)
