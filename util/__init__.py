@@ -46,3 +46,12 @@ def copy_to_clipboard(raw):
 # Read a multi line input for the console with given sentinel
 def raw_multi_line_input(sentinel=''):
     return iter(raw_input, sentinel)
+
+
+# create set using manipulator in raw data
+def create_set(raw, manipulator=lambda s: s):
+    result = []
+    for i in raw:
+        if manipulator(i) not in result:
+            result.append(i)
+    return set(result)
