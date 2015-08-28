@@ -2,6 +2,8 @@ __author__ = 'jens'
 
 import util
 
+# Extracts belgian phone numbers from text
+
 lines = util.raw_multi_line_input()
 phones = []
 for line in lines:
