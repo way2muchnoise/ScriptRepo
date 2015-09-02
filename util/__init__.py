@@ -43,6 +43,15 @@ def copy_to_clipboard(raw):
     tk.destroy()
 
 
+# Get contents of keyboard
+def copy_from_clipboard():
+    tk = Tkinter.Tk()
+    tk.withdraw()
+    clipboard = tk.clipboard_get()
+    tk.destroy()
+    return clipboard
+
+
 # Read a multi line input for the console with given sentinel
 def raw_multi_line_input(sentinel=''):
     return iter(raw_input, sentinel)
