@@ -59,6 +59,7 @@ def raw_multi_line_input(sentinel=''):
 
 # create set using manipulator in raw data
 def create_set(raw, manipulator=lambda s: s):
+    raw = set(raw)
     result = []
     for i in raw:
         if manipulator(i) not in result:
