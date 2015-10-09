@@ -65,3 +65,10 @@ def create_set(raw, manipulator=lambda s: s):
         if manipulator(i) not in result:
             result.append(i)
     return set(result)
+
+
+def trim(array):
+    result = []
+    for s in array:
+        result.append(s.strip())
+    return result
