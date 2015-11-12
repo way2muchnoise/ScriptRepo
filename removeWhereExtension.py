@@ -11,6 +11,6 @@ to_del = util.create_set(util.raw_multi_line_input(), lambda s: s.lower())
 for to_del_entry in to_del:
     base_set = set(base)
     for entry in base_set:
-        if entry.endswith(to_del_entry):
+        if entry.lower().endswith(to_del_entry.lower()):
             base.remove(entry)
 util.copy_to_clipboard(sorted(base, key=str.lower))

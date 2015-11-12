@@ -11,6 +11,6 @@ to_find = util.create_set(util.raw_multi_line_input(), lambda s: s.lower())
 found = []
 for to_find_entry in to_find:
     for entry in base:
-        if entry.endswith(to_find_entry):
+        if entry.lower().endswith(to_find_entry.lower()):
             found.append(entry)
 util.copy_to_clipboard(sorted(found, key=str.lower))
