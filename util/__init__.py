@@ -17,14 +17,14 @@ def print_prep(raw, depth=0, indent_text=' '):
         for k, v in raw.items():
             if hasattr(v, '__iter__'):
                 prepped += add_indent(depth, k, indent_text)
-                prepped += print_prep(v, depth+1, indent_text)
+                prepped += print_prep(v, depth + 1, indent_text)
             else:
                 prepped += add_indent(depth, '%s : %s' % (k, v), indent_text)
             prepped += '\n'
     elif type(raw) is list:
         for v in raw:
             if hasattr(v, '__iter__'):
-                prepped += print_prep(v, depth+1, indent_text)
+                prepped += print_prep(v, depth + 1, indent_text)
             else:
                 prepped += add_indent(depth, v, indent_text)
             prepped += '\n'
@@ -67,8 +67,35 @@ def create_set(raw, manipulator=lambda s: s):
     return set(result)
 
 
+# trim all elements in an array
 def trim(array):
     result = []
     for s in array:
         result.append(s.strip())
     return result
+
+
+# print text with given indent
+def print_indent(indent, text, sign=" "):
+    for x in xrange(indent):
+        text = sign + text
+    print text
+
+
+# print a dictionary or list in a fairly readable fashion
+def print_dict(d, depth=0):
+    if type(d) == dict:
+        for k, v in d.items():
+            if hasattr(v, '__iter__'):
+                print_indent(depth, k)
+                print_dict(v, depth + 1)
+            else:
+                print_indent(depth, '%s : %s' % (k, v))
+    elif type(d) == list:
+        for v in d:
+            if hasattr(v, '__iter__'):
+                print_dict(v, depth + 1)
+            else:
+                print_indent(depth, v)
+    else:
+        print_indent(depth, d)
